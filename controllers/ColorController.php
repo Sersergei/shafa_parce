@@ -3,21 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use yii\filters\VerbFilter;
-use yii\helpers\ArrayHelper;
+use app\models\Color;
+use yii\data\ActiveDataProvider;
+use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\web\Response;
-use yii\widgets\ActiveForm;
-use yii\base\Model;
-use yii\base\Controller;
-use app\models\Sklad;
-use app\models\Tovar;
-use app\models\TovarSearch;
+use yii\filters\VerbFilter;
 
 /**
- * TovarController implements the CRUD actions for Tovar model.
+ * ColorController implements the CRUD actions for Color model.
  */
-class TovarController extends Controller
+class ColorController extends Controller
 {
     /**
      * @inheritdoc
@@ -35,46 +30,43 @@ class TovarController extends Controller
     }
 
     /**
-     * Lists all Tovar models.
+     * Lists all Color models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new TovarSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = new ActiveDataProvider([
+            'query' => Color::find(),
+        ]);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single Tovar model.
-     * @param string $id
+     * Displays a single Color model.
+     * @param integer $id
      * @return mixed
      */
     public function actionView($id)
     {
-
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
-
     }
 
     /**
-     * Creates a new Tovar model.
+     * Creates a new Color model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Tovar();
-        $modelsSklad= [new Sklad()];
+        $model = new Color();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->id_Color]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -83,9 +75,9 @@ class TovarController extends Controller
     }
 
     /**
-     * Updates an existing Tovar model.
+     * Updates an existing Color model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param string $id
+     * @param integer $id
      * @return mixed
      */
     public function actionUpdate($id)
@@ -93,7 +85,7 @@ class TovarController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->id_Color]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -102,9 +94,9 @@ class TovarController extends Controller
     }
 
     /**
-     * Deletes an existing Tovar model.
+     * Deletes an existing Color model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param string $id
+     * @param integer $id
      * @return mixed
      */
     public function actionDelete($id)
@@ -115,15 +107,15 @@ class TovarController extends Controller
     }
 
     /**
-     * Finds the Tovar model based on its primary key value.
+     * Finds the Color model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param string $id
-     * @return Tovar the loaded model
+     * @param integer $id
+     * @return Color the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Tovar::findOne($id)) !== null) {
+        if (($model = Color::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -17,6 +17,7 @@ class EntryForm extends  Model
     {
         return [
             ['url','url','defaultScheme'=>'http'],
+            [['url',], 'required'],
         ];
     }
 }

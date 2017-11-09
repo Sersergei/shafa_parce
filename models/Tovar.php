@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-
+use yii\base\Model;
 /**
  * This is the model class for table "Tovar".
  *
@@ -29,7 +29,7 @@ class Tovar extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['URL', 'Name', 'Description', 'Price', 'Img','Color'], 'required'],
+            [['URL', 'Name', 'Description', 'Price', ], 'required'],
             [['URL', 'Description', 'Img'], 'string'],
             [['Name'], 'string', 'max' => 100],
             [['Price'], 'string', 'max' => 5],
@@ -47,7 +47,7 @@ class Tovar extends \yii\db\ActiveRecord
             'Description' => 'Description',
             'Price' => 'Price',
             'Img' => 'Img',
-            'Color'=>'Color',
+
 
         ];
     }

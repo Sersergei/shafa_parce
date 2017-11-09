@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Tovar */
+/* @var $model app\models\Color */
 
-$this->title = $model->Name;
-$this->params['breadcrumbs'][] = ['label' => 'Tovars', 'url' => ['index']];
+$this->title = $model->id_Color;
+$this->params['breadcrumbs'][] = ['label' => 'Colors', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="tovar-view">
+<div class="color-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Update', ['update', 'id' => $model->id_Color], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->id_Color], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -28,12 +28,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'URL:ntext',
-            'Name',
-            'Description:ntext',
-            'Price',
+            'id_Color',
+            'Name_Color:ntext',
         ],
     ]) ?>
-    <?php echo $model->Img ?>
 
 </div>
