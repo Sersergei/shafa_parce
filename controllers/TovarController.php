@@ -67,19 +67,7 @@ class TovarController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
-    {
-        $model = new Tovar();
-        $modelsSklad= [new Sklad()];
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
-    }
 
     /**
      * Updates an existing Tovar model.
@@ -90,6 +78,7 @@ class TovarController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+       
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
