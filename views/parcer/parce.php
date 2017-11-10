@@ -68,8 +68,8 @@ $form=ActiveForm::begin(['id'=>'dynamic-form']); ?>
 ]); ?>
 
     <div class="panel-heading">
-    <i class="fa fa-envelope"></i> Address Book
-    <button type="button" class="pull-right add-item btn btn-success btn-xs"><i class="fa fa-plus"></i> Add address</button>
+    <i class="fa fa-envelope"></i>
+    <button type="button" class="pull-right add-item btn btn-success btn-xs"><i class="fa fa-plus"></i> Добавить на склад</button>
     <div class="clearfix"></div>
     </div>
     <div class="panel-body container-items"><!-- widgetContainer -->
@@ -89,16 +89,17 @@ $form=ActiveForm::begin(['id'=>'dynamic-form']); ?>
         }
         $size=Size::find()->all();
         $size_item=\yii\helpers\ArrayHelper::map($size,'id_size','Name_suze');
+
         $color=\app\models\Color::find()->all();
         $color_item=\yii\helpers\ArrayHelper::map($color,'id_Color','Name_Color');
         ?>
 
         <div class="row">
             <div class="col-sm-6">
-                <?= $form->field($modelSklad, "[{$index}]id_Size")->dropDownList($size_item) ?>
+                <?= $form->field($modelSklad, "[{$index}]id_Size")->dropDownList($size_item, ['prompt' => '']) ?>
             </div>
             <div class="col-sm-6">
-                <?= $form->field($modelSklad, "[{$index}]id_Color")->dropDownList($color_item) ?>
+                <?= $form->field($modelSklad, "[{$index}]id_Color")->dropDownList($color_item, ['prompt' => '']) ?>
             </div>
             <div class="col-sm-6">
                 <?= $form->field($modelSklad, "[{$index}]count")->textInput(['maxlength' => true]) ?>

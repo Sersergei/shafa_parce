@@ -9,7 +9,7 @@ use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
 use yii\base\Model;
-use yii\base\Controller;
+use yii\web\Controller;
 use app\models\Sklad;
 use app\models\Tovar;
 use app\models\TovarSearch;
@@ -56,7 +56,6 @@ class TovarController extends Controller
      */
     public function actionView($id)
     {
-
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
